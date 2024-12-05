@@ -1,6 +1,5 @@
 import React from "react";
 import { FiShoppingCart } from "react-icons/fi";
-import { books } from "../assets/assets";
 import { getImgUrl } from "../utils/getImgUrl";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";

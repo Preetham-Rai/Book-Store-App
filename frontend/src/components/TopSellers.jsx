@@ -37,7 +37,7 @@ function TopSellers() {
       : books.filter((book) => book.category === selectedCat.toLowerCase());
 
   return (
-    <div className="py-10">
+    <div className="py-6">
       <h2 className="text-3xl font-semibold mb-6">Top Sellers</h2>
       <div className="mb-8 flex items-center">
         <select

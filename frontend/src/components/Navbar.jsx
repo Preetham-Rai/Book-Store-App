@@ -4,10 +4,11 @@ import { IoBookSharp, IoSearch, IoHeartOutline } from "react-icons/io5";
 import { HiOutlineShoppingCart, HiOutlineUser } from "react-icons/hi";
 import { assets } from "../assets/assets";
 import { useSelector } from "react-redux";
+import { useAuth } from "../context/AuthContext";
 
 const navigation = [
   { name: "Dashboard", href: "/dashboard" },
-  { name: "Orders", href: "/order" },
+  { name: "Orders", href: "/orders" },
   { name: "Cart Page", href: "/cart" },
   { name: "Check Out", href: "/checkout" },
 ];
@@ -15,7 +16,11 @@ const navigation = [
 function Navbar() {
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   const cartItems = useSelector((state) => state.cart.cartItem);
-  const currentUser = false;
+  const { currentUser, logOut } = useAuth();
+
+  const handleLogOut = () => {
+    logOut();
+  };
 
   console.log(cartItems);
 
@@ -63,6 +68,14 @@ function Navbar() {
                           </Link>
                         </li>
                       ))}
+                      <li className="w-full">
+                        <button
+                          onClick={handleLogOut}
+                          className="block px-4 w-full text-left py-2 text-sm hover:bg-gray-100"
+                        >
+                          log out
+                        </button>
+                      </li>
                     </ul>
                   </div>
                 )}

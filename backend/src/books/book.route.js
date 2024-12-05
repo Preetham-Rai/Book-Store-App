@@ -1,5 +1,4 @@
 import express from "express";
-import Book from "./book.model.js";
 import {
   postBook,
   getBooks,
@@ -7,13 +6,14 @@ import {
   updateBook,
   deleteBook,
 } from "./book.controller.js";
+import verifyAdminToken from "../middleware/verifyAdmin.js";
 
 const router = express.Router();
 
-router.post("/create-book", postBook);
+router.post("/create-book", verifyAdminToken, postBook);
 router.get("/", getBooks);
 router.get("/:id", getSingleBook);
-router.put("/edit/:id", updateBook);
-router.delete("/:id", deleteBook);
+router.put("/edit/:id", verifyAdminToken, updateBook);
+router.delete("/:id", verifyAdminToken, deleteBook);
 
 export default router;

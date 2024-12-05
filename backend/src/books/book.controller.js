@@ -6,10 +6,10 @@ const postBook = async (req, res) => {
     await newBook.save();
     res
       .status(200)
-      .send({ message: "Book Posted Successfully", book: newBook });
+      .send({ message: "Book posted successfully", book: newBook });
   } catch (error) {
-    console.log("Error While creating the book", error);
-    res.status(500).send({ message: "Failed" });
+    console.error("Error creating book", error);
+    res.status(500).send({ message: "Failed to create book" });
   }
 };
 
@@ -18,8 +18,8 @@ const getBooks = async (req, res) => {
     const books = await Book.find().sort({ createdAt: -1 });
     res.status(200).send(books);
   } catch (error) {
-    console.log("Error While Fetching the books", error);
-    res.status(500).send({ message: "Failed to fetch the books" });
+    console.error("Error fetching books", error);
+    res.status(500).send({ message: "Failed to fetch books" });
   }
 };
 
@@ -28,12 +28,12 @@ const getSingleBook = async (req, res) => {
     const { id } = req.params;
     const book = await Book.findById(id);
     if (!book) {
-      res.status(404).send({ message: "Book not found" });
+      res.status(404).send({ message: "Book not Found!" });
     }
     res.status(200).send(book);
   } catch (error) {
-    console.log("Error While Fetching the book", error);
-    res.status(500).send({ message: "Failed to fetch the book" });
+    console.error("Error fetching book", error);
+    res.status(500).send({ message: "Failed to fetch book" });
   }
 };
 
@@ -44,15 +44,15 @@ const updateBook = async (req, res) => {
       new: true,
     });
     if (!updatedBook) {
-      res.status(404).send({ message: "Book is not found" });
+      res.status(404).send({ message: "Book is not Found!" });
     }
     res.status(200).send({
-      message: "Book Updated Successfully",
+      message: "Book updated successfully",
       book: updatedBook,
     });
   } catch (error) {
-    console.log("Error While Updating the book", error);
-    res.status(500).send({ message: "Failed to Update the book" });
+    console.error("Error updating a book", error);
+    res.status(500).send({ message: "Failed to update a book" });
   }
 };
 
@@ -61,15 +61,15 @@ const deleteBook = async (req, res) => {
     const { id } = req.params;
     const deletedBook = await Book.findByIdAndDelete(id);
     if (!deletedBook) {
-      res.status(404).send({ message: "Book is not found" });
+      res.status(404).send({ message: "Book is not Found!" });
     }
     res.status(200).send({
-      message: "Book Deleted Successfully",
+      message: "Book deleted successfully",
       book: deletedBook,
     });
   } catch (error) {
-    console.log("Error While Deleting the book", error);
-    res.status(500).send({ message: "Failed to delete the book" });
+    console.error("Error deleting a book", error);
+    res.status(500).send({ message: "Failed to delete a book" });
   }
 };
 
