@@ -1,5 +1,5 @@
 const getBaseURL = () => {
-  return "https://book-store-app-backend-h6ub.onrender.com";
+  return "http://localhost:5173";
 };
 
 export default getBaseURL;
