@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import getBaseURL from "../utils/baseUrl";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const AdminLogin = () => {
   const [message, setMessage] = useState("");
@@ -94,6 +94,9 @@ const AdminLogin = () => {
 
         <p className="mt-5 text-center text-gray-500 text-xs">
           &copy;2025 Book Store. All rights reserved.
+        </p>
+        <p className="text-center mt-4 text-blue-600 hover:text-blue-800">
+          <Link to="/">Home Page</Link>
         </p>
       </div>
     </div>

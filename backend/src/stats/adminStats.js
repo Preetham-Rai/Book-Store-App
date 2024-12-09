@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import express from "express";
-import Order from "../orders/order.model.js";
-import Book from "../books/book.model.js";
+import Order from "../models/orderModel.js";
+import Book from "../models/bookModel.js";
 const router = express.Router();
 
 // Function to calculate admin stats

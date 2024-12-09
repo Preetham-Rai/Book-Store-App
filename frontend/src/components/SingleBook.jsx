@@ -5,6 +5,7 @@ import { getImgUrl } from "../utils/getImgUrl";
 import { FiShoppingCart } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/features/cart/cartSlice";
+import Loading from "./Loading";
 
 const SingleBook = () => {
   const { id } = useParams();
@@ -16,7 +17,7 @@ const SingleBook = () => {
     dispatch(addToCart(book));
   };
 
-  if (isLoading) return <div>Loading....</div>;
+  if (isLoading) return <Loading />;
   if (isError) return <div>Error while getting book information</div>;
 
   return (

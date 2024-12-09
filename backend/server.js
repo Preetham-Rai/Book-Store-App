@@ -1,15 +1,14 @@
 import express from "express";
-import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
+import bookRoutes from "./src/routes/bookRoute.js";
+import orderRoutes from "./src/routes/orderRoute.js";
+import userRoutes from "./src/routes/userRoute.js";
+import adminRoutes from "./src/stats/adminStats.js";
+import connectDB from "./src/config/mongodb.js";
 
-import bookRoutes from "./src/books/book.route.js";
-import orderRoutes from "./src/orders/order.route.js";
-import userRoutes from "./src/users/user.route.js";
-import adminRoutes from "./src/stats/admin.stats.js";
 const app = express();
-const port = process.env.PORT || 5000;
-
+const PORT = process.env.PORT || 5000;
 dotenv.config();
 
 app.use(express.json());
@@ -20,24 +19,21 @@ app.use(
   })
 );
 
+// endpoints
 app.use("/api/books", bookRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/auth", userRoutes);
 app.use("/api/admin", adminRoutes);
 
-async function main() {
-  await mongoose.connect(process.env.DB_URL);
-  app.get("/", (req, res) => {
-    res.send("Hello World!");
-  });
-  // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
-}
-main()
-  .then(() => console.log("MongoDB is connected"))
-  .catch((err) => console.log(err));
+//database connection
+connectDB();
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
+app.listen(PORT, () => {
+  console.log(`Your App listening on port ${PORT}`);
 });
 
 // EcexmlCufAlU40nO

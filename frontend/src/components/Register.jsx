@@ -20,7 +20,6 @@ const Register = () => {
     try {
       await registerUser(data.email, data.password);
       alert("User Registration Successfull");
-      navigate("/login");
     } catch (error) {
       setMessage("Please provide a valid email and password");
     }
@@ -28,7 +27,7 @@ const Register = () => {
   const handleGoogleSignIn = async () => {
     try {
       await signInWithGoogle();
-      alert("login Successful with Google");
+      alert("Registered Successful with Google");
       navigate("/");
     } catch (error) {
       console.error(error);

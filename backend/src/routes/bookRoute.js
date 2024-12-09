@@ -5,7 +5,7 @@ import {
   getSingleBook,
   updateBook,
   deleteBook,
-} from "./book.controller.js";
+} from "../controller/bookController.js";
 import verifyAdminToken from "../middleware/verifyAdmin.js";
 
 const router = express.Router();

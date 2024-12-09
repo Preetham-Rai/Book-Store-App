@@ -19,7 +19,7 @@ function Banner() {
         </button>
       </div>
       <div className="md:w-1/2 w-full flex items-center md:justify-end">
-        <img src={assets.bannerImage} alt="" />
+        <img src={assets.bannerImage} alt="banner-image" />
       </div>
     </div>
   );

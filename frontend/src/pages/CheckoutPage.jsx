@@ -26,7 +26,6 @@ const CheckoutPage = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
-    console.log(data);
     const newOrder = {
       name: data.name,
       email: currentUser?.email,
