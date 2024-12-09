@@ -8,7 +8,7 @@ import adminRoutes from "./src/stats/adminStats.js";
 import connectDB from "./src/config/mongodb.js";
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const port = process.env.PORT || 5000;
 dotenv.config();
 
 app.use(express.json());
@@ -32,9 +32,6 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-app.listen(PORT, () => {
-  console.log(`Your App listening on port ${PORT}`);
+app.listen(port, () => {
+  console.log(`Your App listening on port ${port}`);
 });
-
-// EcexmlCufAlU40nO
-// raipreetham8
